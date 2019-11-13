@@ -13,7 +13,7 @@ if ($filas > 0){
     header("location: panel.html");
 }else {
     echo "Error en los datos ingresados. NO ADMIN";
-    header("location: login.html");
+    header("location: login.php");
 }
 mysqli_free_result($resultado);
 mysqli_close($conexion);
