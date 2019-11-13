@@ -3,7 +3,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>Bienvenido a AppBaches Web</title>
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="5"/>
     <script src = "xml_parser.php"></script>
 
 
@@ -72,10 +72,16 @@
               var icon = customLabel[id_user] || {};
 
               if(estatus == 1){
-                var contentString_r = 'ID: ' + id + '. ¡Caso resuelto!';
+                var contentString_r = 'ID del reporte: ' + id;
                 var text = document.createElement('text');
                 text.textContent = contentString_r;
                 infowincontent.appendChild(text);
+                infowincontent.appendChild(document.createElement('br'));
+
+                var strong = document.createElement('strong');
+                strong.textContent = '¡Caso resuelto!';
+                infowincontent.appendChild(strong);
+                infowincontent.appendChild(document.createElement('br'))
 
                 var marker = new google.maps.Marker({
                   map: map,
@@ -88,10 +94,16 @@
               }
 
               if(estatus == 2){
-                var contentString_r = 'ID: ' + id + '. Caso en proceso.';
+                var contentString_r = 'ID del reporte: ' + id;
                 var text = document.createElement('text');
                 text.textContent = contentString_r;
                 infowincontent.appendChild(text);
+                infowincontent.appendChild(document.createElement('br'));
+
+                var strong = document.createElement('strong');
+                strong.textContent = 'Caso en proceso.';
+                infowincontent.appendChild(strong);
+                infowincontent.appendChild(document.createElement('br'));
 
                 var marker = new google.maps.Marker({
                   map: map,
@@ -104,11 +116,16 @@
               }
 
               if(estatus == 3){
-                var contentString_r = 'ID: ' + id + '. Caso sin revisar.';
+                var contentString_r = 'ID del reporte: ' + id;
                 var text = document.createElement('text');
                 text.textContent = contentString_r;
                 infowincontent.appendChild(text);
+                infowincontent.appendChild(document.createElement('br'));
 
+                var strong = document.createElement('strong');
+                strong.textContent = 'Caso sin revisar.';
+                infowincontent.appendChild(strong);
+                infowincontent.appendChild(document.createElement('br'))
                 var marker = new google.maps.Marker({
                   map: map,
                   position: point,

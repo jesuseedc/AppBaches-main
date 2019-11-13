@@ -12,7 +12,8 @@ $filas=mysqli_num_rows($resultado);
 if ($filas > 0){
     header("location: panel.html");
 }else {
-    echo "Error en los datos ingresados.";
+    echo "Error en los datos ingresados. NO ADMIN";
+    header("location: login.html");
 }
 mysqli_free_result($resultado);
 mysqli_close($conexion);
