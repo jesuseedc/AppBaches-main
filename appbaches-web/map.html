@@ -72,7 +72,7 @@
               var icon = customLabel[id_user] || {};
 
               if(estatus == 1){
-                var contentString_r = '¡Caso resuelto!';
+                var contentString_r = 'ID: ' + id + '. ¡Caso resuelto!';
                 var text = document.createElement('text');
                 text.textContent = contentString_r;
                 infowincontent.appendChild(text);
@@ -88,7 +88,7 @@
               }
 
               if(estatus == 2){
-                var contentString_r = 'Caso en proceso.';
+                var contentString_r = 'ID: ' + id + '. Caso en proceso.';
                 var text = document.createElement('text');
                 text.textContent = contentString_r;
                 infowincontent.appendChild(text);
@@ -104,7 +104,7 @@
               }
 
               if(estatus == 3){
-                var contentString_r = 'Caso sin revisar.';
+                var contentString_r = 'ID: ' + id + '. Caso sin revisar.';
                 var text = document.createElement('text');
                 text.textContent = contentString_r;
                 infowincontent.appendChild(text);
