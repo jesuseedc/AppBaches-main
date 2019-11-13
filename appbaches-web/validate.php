@@ -1,10 +1,10 @@
 <?php
-$Correo=$_POST['Correo'];
-$Password=$_POST['Password'];
+$username=$_POST['username'];
+$password=$_POST['password'];
 
 //conexion bd
-$conexion=mysqli_connect("localhost", "root", "", "appbaches");
-$consulta="SELECT * FROM user WHERE Correo='$Correo' and Password='$Password' and user_type ='0'";
+$conexion=mysqli_connect("localhost", "root", "", "AppBaches");
+$consulta="SELECT * FROM user WHERE Correo ='$username' and Password ='$password' and user_type = '0'";
 $resultado=mysqli_query($conexion, $consulta);
 
 $filas=mysqli_num_rows($resultado);
