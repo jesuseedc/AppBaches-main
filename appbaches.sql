@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2019 a las 18:58:50
+-- Tiempo de generación: 16-11-2019 a las 21:55:21
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -78,7 +78,7 @@ CREATE TABLE `user` (
   `Nombre` varchar(30) NOT NULL,
   `Apellido` varchar(30) NOT NULL,
   `Password` varchar(30) NOT NULL,
-  `user_type` tinyint(1) DEFAULT NULL COMMENT '0 = admin, 1 o cualquier no. = ciudadano'
+  `user_type` varchar(3) DEFAULT NULL COMMENT '''adm'' = administrador, ''gen'' = general'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -86,12 +86,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Correo`, `Nombre`, `Apellido`, `Password`, `user_type`) VALUES
-('a216200258@alumnos.unison.com', 'Abel', 'Pacheco', '6756', 1),
-('a216201598@alumnos.unison.mx', 'Fernando', 'Trujillo', '456', 1),
-('cidue@aytohmo.com', 'cidue', 'cidue', 'admin', 0),
-('davidagp20@gmail.com', 'David', 'Galvez', '23451', 1),
-('jesus.pesqueira@gmail.com', 'Jesus', 'Pesqueira', '0909', 1),
-('lferht@gmail.com', 'Luis', 'Hinojosa', '123', 1);
+('a216200258@alumnos.unison.com', 'Abel', 'Pacheco', '6756', 'gen'),
+('a216201598@alumnos.unison.mx', 'Fernando', 'Trujillo', '456', 'gen'),
+('cidue@aytohmo.com', 'cidue', 'cidue', 'admin', 'adm'),
+('davidagp20@gmail.com', 'David', 'Galvez', '23451', 'gen'),
+('jesus.pesqueira@gmail.com', 'Jesus', 'Pesqueira', '0909', 'gen'),
+('lferht@gmail.com', 'Luis', 'Hinojosa', '123', 'gen');
 
 --
 -- Índices para tablas volcadas
@@ -134,4 +134,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
