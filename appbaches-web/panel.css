@@ -1,5 +1,5 @@
 #map {
-  height: 100%;
+  height: 95%;
 }
 
 html, body {
@@ -18,6 +18,7 @@ h1{
 #menu{
     background-color: #eee;
     padding: 10px;
+    height: 2%;
 }
 
 #menu ul{
@@ -26,6 +27,7 @@ h1{
     list-style: none;
     display: inline-block;
     width: 100%;
+    height: 2%;
 }
 
 #menu ul li{

@@ -1,6 +1,8 @@
 <?php
 
-require("phpsqlajax_dbinfo.php");
+$username="root";
+$password="";
+$database="appbaches";
 
 // Start XML file, create parent node
 
@@ -40,8 +42,10 @@ while ($row = @mysqli_fetch_assoc($result)){
   $newnode->setAttribute("fecha",$row['fecha']);
   $newnode->setAttribute("latitud", $row['latitud']);
   $newnode->setAttribute("longitud", $row['longitud']);
+  $newnode->setAttribute("dir_aprox", $row['direccion_aprox']);
   $newnode->setAttribute("estatus", $row['estatus']);
   $newnode->setAttribute("id_user", $row['id_user']);
+  $newnode->setAttribute("comentarios", $row['comentarios']);
 }
 
 echo $dom->saveXML();

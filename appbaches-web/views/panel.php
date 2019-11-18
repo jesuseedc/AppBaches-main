@@ -13,7 +13,7 @@
   <body>
     <div id="menu">
       <ul>
-        <li><b>Bienvenido</b> <?php echo $user->getNombre();  ?><b>!</b></li>
+        <li><b>Bienvenido</b> <?php echo $user->getNombre();  ?></li>
         <li class="buttons"><a href="include/logout.php">Cerrar sesion&nbsp;&nbsp;&nbsp;</a><a href="views/mgmt_reportes.php">Administrar reportes</a></li>
       </ul>
     </div>
@@ -50,6 +50,7 @@
               var point = new google.maps.LatLng(
                   parseFloat(markerElem.getAttribute('latitud')),
                   parseFloat(markerElem.getAttribute('longitud')));
+              var diraprox = markerElem.getAttribute('dir_aprox');
 
               var infowincontent = document.createElement('div');
               var strong = document.createElement('strong');
@@ -61,6 +62,12 @@
               text.textContent = 'Creado por: ' + id_user;
               infowincontent.appendChild(text);
               infowincontent.appendChild(document.createElement('br'));
+
+              var text = document.createElement('text');
+              text.textContent = 'Direccion aproximada: ' + diraprox;
+              infowincontent.appendChild(text);
+              infowincontent.appendChild(document.createElement('br'));              
+
 
               var icon = customLabel[id_user] || {};
 
