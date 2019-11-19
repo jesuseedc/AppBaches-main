@@ -20,8 +20,6 @@ class PDF extends FPDF
         $this->Cell(30);
         $this->Cell(120,10, 'Reportes',0,1,'C');
         $this->SetFont('Arial','',12);
-        $this->Cell(190,10, 'Significado de Estatus: ',0,1,'C');
-        $this->Cell(190,10, '1: Revisado, 2: En proceso, 3: Sin revisar',0,1,'C');
         $this->Ln(20);
     }
     
@@ -34,20 +32,22 @@ class PDF extends FPDF
 }
 
 
-$query = "SELECT id, fecha, direccion_aprox, estatus, id_user FROM reporte";
+$query = "SELECT id, fecha, latitud, longitud, direccion_aprox, estatus, id_user FROM reporte";
 $resultado = $conn->query($query);
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
-$pdf->AddPage();
+$pdf->AddPage(L);
 
 $pdf->SetFillColor(232,232,232);
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(20,6,'#Reporte',1,0,'C',1);
 $pdf->Cell(40,6,'Fecha',1,0,'C',1);
-$pdf->Cell(70,6,'Direccion Aproximada',1,0,'C',1);
-$pdf->Cell(20,6,'Estatus',1,0,'C',1);
-$pdf->Cell(40,6,'Usuario',1,1,'C',1);
+$pdf->Cell(40,6,'Latitud',1,0,'C',1);
+$pdf->Cell(40,6,'Longitud',1,0,'C',1);
+//$pdf->Cell(70,6,'Direccion Aproximada',1,0,'C',1);
+$pdf->Cell(70,6,'Estatus',1,0,'C',1);
+$pdf->Cell(70,6,'Usuario',1,1,'C',1);
 
 $pdf->SetFont('Arial','',10);
 
@@ -57,11 +57,18 @@ while($row = $resultado->fetch_assoc())
     $pdf->Cell(20,6,utf8_decode($row['id']),1,0,'C');
     $pdf->SetFont('Arial','',8);
     $pdf->Cell(40,6,$row['fecha'],1,0,'C');
-    $pdf->SetFont('Arial','',12);
-    $pdf->Cell(70,6,utf8_decode($row['direccion_aprox']),1,0,'C');
-    $pdf->Cell(20,6,utf8_decode($row['estatus']),1,0,'C');
-    $pdf->SetFont('Arial','',7);
-    $pdf->Cell(40,6,utf8_decode($row['id_user']),1,1,'L');
+	$pdf->SetFont('Arial','',12);
+	$pdf->Cell(40,6,$row['latitud'],1,0,'C');
+	$pdf->Cell(40,6,$row['longitud'],1,0,'C');
+    //$pdf->Cell(70,6,utf8_decode($row['direccion_aprox']),1,0,'C');
+	if ($row['estatus'] == 1) {
+		$pdf->Cell(70,6,'Caso solucionado.',1,0,'C');
+	} else if ($row['estatus'] == 2) {
+		$pdf->Cell(70,6,'Caso en proceso.',1,0,'C');
+	}else {
+		$pdf->Cell(70,6,'Caso sin atender.',1,0,'C');
+	}
+    $pdf->Cell(70,6,utf8_decode($row['id_user']),1,1,'L');
     
 }
 
